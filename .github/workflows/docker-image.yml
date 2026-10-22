@@ -3,7 +3,8 @@ name: Docker Image CI
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -30,5 +31,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            DOCKER_USERNAME/handwritten-document-agent:latest
-            DOCKER_USERNAME/handwritten-document-agent:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/handwritten-document-agent:latest
+            ${{ secrets.DOCKER_USERNAME }}/handwritten-document-agent:${{ github.sha }}
