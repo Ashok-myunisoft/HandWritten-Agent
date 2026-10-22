@@ -1,0 +1,14 @@
+services:
+  handwritten-agent:
+    build: .
+    container_name: handwritten-document-agent
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      OLLAMA_MODEL: mistral
+      USE_OLLAMA: "true"
+      OCR_ENGINE: paddle
+      OUTPUT_DIR: /app/outputs
+    volumes:
+      - ./outputs:/app/outputs
